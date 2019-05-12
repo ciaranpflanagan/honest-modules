@@ -17,3 +17,9 @@
 const Route = use('Route')
 
 Route.on('/').render('home')
+
+Route
+  .get('users/:id', 'UserController.show')
+  .middleware('auth')
+
+Route.post('login', 'UserController.login')
