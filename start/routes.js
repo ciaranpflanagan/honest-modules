@@ -21,5 +21,9 @@ Route.on('/').render('home')
 Route.get('users/:id', 'UserController.show').middleware('auth')
 
 // User Account Routes
-Route.get('/register', 'UserController.register')
-Route.post('login', 'UserController.login')
+Route.get('/login', 'UserController.show_login')
+Route.get('/logout', 'UserController.logout')
+Route.get('/register', 'UserController.show_register')
+Route.post('/register', 'UserController.register')
+Route.post('login', 'UserController.login').middleware('guest')
+Route.get('users/:id', 'UserController.show').middleware('auth')

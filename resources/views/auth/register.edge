@@ -10,29 +10,22 @@
       </div>
       <div class="row">
       	<div class="col-md-12">
-	        <form action="">
-				<div class="row">
-					<div class="col-md-4">
-						<label for="name">Name: </label>
-					</div>
-			        <div class="col-md-8">
-			        	<input type="text" name="name" class="form-control" placeholder="John Doe">
-			        </div>
-				</div>
-				<div class="row">
-					<div class="col-md-4">
-						<label for="email">Email: </label>
-					</div>
-		        	<div class="col-md-8">
-		        		<input type="text" name="email" class="form-control" placeholder="john.doe@ucdconnect.ie">
-		        	</div>
-				</div>
-	          <div class="row">
-	          	<div class="col-md-8 offset-md-2">
-	          		<input type="submit" name="submit" value="Search" class="form-control btn btn-primary">
-	          	</div>
-	          </div>
-	        </form>
+	      <form action="/register" method="POST">
+	        {{ csrfField() }}
+	        <input type="text" name="username" placeholder="Username" class="form-control" value="{{ old('username', '') }}">
+	        {{ elIf('<div class="alert alert-danger">$self</div>', getErrorFor('username'), hasErrorFor('username')) }}<br>
+
+	        <input type="text" name="name" placeholder="John Doe" class="form-control" value="{{ old('name', '') }}">
+	        {{ elIf('<div class="alert alert-danger">$self</div>', getErrorFor('name'), hasErrorFor('name')) }}<br>
+
+	        <input type="text" name="email" placeholder="john.doe@ucdconnect.ie" class="form-control" value="{{ old('email', '') }}">
+	        {{ elIf('<div class="alert alert-danger">$self</div>', getErrorFor('email'), hasErrorFor('email')) }}<br>
+
+	        <input type="password" name="password" placeholder="Password" class="form-control">
+	        {{ elIf('<div class="alert alert-danger">$self</div>', getErrorFor('password'), hasErrorFor('password')) }}<br>
+
+	        <input type="submit" value="Register" class="form-control btn btn-primary">
+	      </form>
       	</div>
       </div>
     </div>
