@@ -32,7 +32,16 @@
   {{-- Reviews --}}
   <div class="row">
     <div class="col-md-8">
-      Reviews go here
+      @each(review in reviews)
+        <div class="row">
+          <div class="col-md-12">
+            <h3>{{ review.title }}</h3>
+            <p>
+              {{ review.body }}
+            </p>
+          </div>
+        </div>
+      @endeach
     </div>
     <div class="col-md-4">
       <h2>Leave A Review</h2><br>

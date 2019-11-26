@@ -10,8 +10,10 @@ class ModuleController {
 	  async index ({ request, response, view, params }) {
 	  	const mod = await Database.from('modules')
 	  		.where('module_code', params.module_code)
+	  	const reviews = await Database.from('reviews')
+	  		.where('module_id', Module.get_id_from_code(params.module_code))
 
-	    return view.render('modules/index', {mod: mod})
+	    return view.render('modules/index', {mod: mod, reviews: reviews})
 	  }
 
   // Add review method
