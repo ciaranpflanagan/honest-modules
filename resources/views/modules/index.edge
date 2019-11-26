@@ -1,27 +1,39 @@
 @layout('inc/layouts')
 
 @section('content')
+@each(mods in mod)
+  {{-- Title --}}
   <section>
     <div class="subtitle">
       <div class="row">
         <div class="col-md-12">
-          <h1>Search For A Module</h1><br>
+          <h1>{{ mods.module_code }} | {{ mods.name }}</h1><br>
         </div>
       </div>
     </div>
   </section>
+
+  {{-- Module Info --}}
   <div class="row">
-    <div class="col-md-8 offset-md-2">
-      <form action="">
-        <div class="row">
-          <div class="col-md-8">
-            <input type="text" name="search" class="form-control" placeholder="COMP20030">
-          </div>
-          <div class="col-md-4">
-            <input type="submit" name="submit" value="Search" class="form-control btn btn-primary">
-          </div>
-        </div>
-      </form>
+    <div class="col-md-8">
+      <p>
+        {{ mods.description }}
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        <span class="mod-info">College: </span> {{ mods.college }} <br>
+        <span class="mod-info">Module Level: </span> {{ mods.level }} <br>
+        <b><a href="{{ mods.link }}">Module Link</a></b>
+      </p>
     </div>
   </div>
+
+  {{-- Reviews --}}
+  <div class="row">
+    <div class="col-md-12">
+      
+    </div>
+  </div>
+@endeach
 @endsection
