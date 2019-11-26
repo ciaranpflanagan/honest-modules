@@ -9,10 +9,14 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <!-- Styles -->
 {{ style('style') }}
 {{ style('css/main.css') }}
+
+<!-- Scripts -->
+{{ script('js/main.js') }}
 
 </head>
 <body>
@@ -51,5 +55,8 @@
   <div class="container">
     @!section('content')
   </div>
+
+<!-- Scripts -->
+{{ script('js/vue.js') }}
 </body>
 </html>
