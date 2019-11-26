@@ -6,15 +6,15 @@ const moment = require('moment');
 const Module = use('App/Models/Module')
 
 class ModuleController {
-	// Shows Single Module Page
-	  async index ({ request, response, view, params }) {
-	  	const mod = await Database.from('modules')
-	  		.where('module_code', params.module_code)
-	  	const reviews = await Database.from('reviews')
-	  		.where('module_id', Module.get_id_from_code(params.module_code))
+  // Shows Single Module Page
+  async index ({ request, response, view, params }) {
+  	const mod = await Database.from('modules')
+  		.where('module_code', params.module_code)
+  	const reviews = await Database.from('reviews')
+  		.where('module_id', Module.get_id_from_code(params.module_code))
 
-	    return view.render('modules/index', {mod: mod, reviews: reviews})
-	  }
+    return view.render('modules/index', {mod: mod, reviews: reviews})
+  }
 
   // Add review method
   async add ({ request, session, response }) {
