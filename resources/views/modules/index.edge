@@ -1,0 +1,27 @@
+@layout('inc/layouts')
+
+@section('content')
+  <section>
+    <div class="subtitle">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Search For A Module</h1><br>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <form action="">
+        <div class="row">
+          <div class="col-md-8">
+            <input type="text" name="search" class="form-control" placeholder="COMP20030">
+          </div>
+          <div class="col-md-4">
+            <input type="submit" name="submit" value="Search" class="form-control btn btn-primary">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+@endsection

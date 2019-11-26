@@ -20,6 +20,9 @@ Route.on('/').render('home')
 
 Route.get('users/:id', 'UserController.show').middleware('auth')
 
+// Modules Routes
+Route.get('/:module_code', 'ModuleController.index')
+
 // User Account Routes
 Route.get('/login', 'UserController.show_login')
 Route.get('/logout', 'UserController.logout')
