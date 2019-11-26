@@ -31,8 +31,26 @@
 
   {{-- Reviews --}}
   <div class="row">
-    <div class="col-md-12">
-      
+    <div class="col-md-8">
+      Reviews go here
+    </div>
+    <div class="col-md-4">
+      <h2>Leave A Review</h2><br>
+      <form action="/add-review" method="POST">
+        {{ csrfField() }}
+        <input type="hidden" name="module_code" value="{{ mods.module_code }}">
+        <div class="row">
+          <label for="title">Title</label><br>
+          <input type="text" name="title" class="form-control">
+        </div>
+        <div class="row">
+          <label for="body">Review Body</label><br>
+          <textarea name="body" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="row">
+          <input type="submit" value="Leave Review" class="form-control btn btn-primary">
+        </div>
+      </form>
     </div>
   </div>
 @endeach

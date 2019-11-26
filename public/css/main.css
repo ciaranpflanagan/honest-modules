@@ -1,7 +1,16 @@
+/*
+	Layout Styles
+*/
 .row {
 	margin-top: 5px;
 }
+.container {
+	margin-bottom: 10px;
+}
 
+/*
+	Module Styles
+*/
 .mod-info {
 	font-weight: bold;
 }

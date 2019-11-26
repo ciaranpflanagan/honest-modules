@@ -22,6 +22,7 @@ Route.get('users/:id', 'UserController.show').middleware('auth')
 
 // Modules Routes
 Route.get('/:module_code', 'ModuleController.index')
+Route.post('/add-review', 'ModuleController.add')
 
 // User Account Routes
 Route.get('/login', 'UserController.show_login')
