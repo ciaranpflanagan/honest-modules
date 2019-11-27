@@ -1,0 +1,88 @@
+@layout('inc/layouts')
+
+@section('content')
+@each(mods in mod)
+  {{-- Title --}}
+  <section>
+    <div class="subtitle">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>{{ mods.module_code }} | {{ mods.name }}</h1><br>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {{-- Module Info --}}
+  <div class="row">
+    <div class="col-md-8">
+      <p>
+        {{ mods.description }}
+      </p>
+    </div>
+    <div class="col-md-4">
+      <p>
+        <span class="mod-info">College: </span> {{ mods.college }} <br>
+        <span class="mod-info">Module Level: </span> {{ mods.level }} <br>
+        <b><a href="{{ mods.link }}">Module Link</a></b>
+      </p>
+    </div>
+  </div>
+
+  {{-- Reviews --}}
+  <div class="row">
+    <div class="col-md-8">
+      @each(review in reviews)
+        <div class="row review-block">
+          <div class="col-md-12">
+            <h3>{{ review.title }}</h3>
+            <star-rating
+              v-model="rating"
+              rating="{{ review.rating }}"
+              star-size="15"
+              read-only="true"></star-rating>
+            <p>
+              {{ review.body }}
+            </p>
+          </div>
+        </div>
+      @endeach
+    </div>
+    <div class="col-md-4">
+      <h2>Leave A Review</h2><br>
+      @loggedIn
+      <form action="/add-review" method="POST">
+        {{ csrfField() }}
+        <input type="hidden" name="module_code" value="{{ mods.module_code }}">
+        <div class="row">
+          <label for="title">Title</label><br>
+          <input type="text" name="title" class="form-control">
+        </div>
+        <div class="row">
+          <label for="body">Review Body</label><br>
+          <textarea name="body" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="row">
+          <label for="rating">Module Rating: </label>
+          <div id="star-rating">
+            <star-rating 
+              v-model="rating"
+              star-size="20"
+              v-bind:increment="0.5"
+              @rating-selected="setRating"></star-rating>
+              <input type="hidden" name="rating" v-model="rating">
+          </div>
+        </div>
+        <div class="row">
+          <input type="submit" value="Leave Review" class="form-control btn btn-primary">
+        </div>
+      </form>
+      @else
+        <p>
+          You need to be logged in to leave a review! You can <a href="/login">Login</a> or <a href="/register">Register</a> for an account.
+        </p>
+      @endloggedIn
+    </div>
+  </div>
+@endeach
+@endsection
