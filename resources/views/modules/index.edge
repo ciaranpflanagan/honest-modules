@@ -45,6 +45,7 @@
     </div>
     <div class="col-md-4">
       <h2>Leave A Review</h2><br>
+      @loggedIn
       <form action="/add-review" method="POST">
         {{ csrfField() }}
         <input type="hidden" name="module_code" value="{{ mods.module_code }}">
@@ -57,9 +58,24 @@
           <textarea name="body" cols="30" rows="10" class="form-control"></textarea>
         </div>
         <div class="row">
+          <label for="rating">Module Rating: </label>
+          <div id="star-rating">
+            <star-rating 
+              v-model="rating"
+              star-size="20"
+              @rating-selected="setRating"></star-rating>
+              <input type="hidden" name="rating" v-model="rating">
+          </div>
+        </div>
+        <div class="row">
           <input type="submit" value="Leave Review" class="form-control btn btn-primary">
         </div>
       </form>
+      @else
+        <p>
+          You need to be logged in to leave a review! You can <a href="/login">Login</a> or <a href="/register">Register</a> for an account.
+        </p>
+      @endloggedIn
     </div>
   </div>
 @endeach

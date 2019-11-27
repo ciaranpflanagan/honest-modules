@@ -17,10 +17,10 @@ class ModuleController {
   }
 
   // Add review method
-  async add ({ request, session, response }) {
+  async add ({ request, session, response, auth }) {
     const rules = {
       title: 'required',
-      body: 'required'
+      body: 'required',
     }
 
     // Validation
@@ -32,12 +32,21 @@ class ModuleController {
       return response.redirect('back')
     }
 
+    // Setting rating default
+    if (!request.input('rating')) {
+      var rating = 2.5;
+    } else {
+      var rating = request.input('rating')
+    }
+
     // Insert review into database
   	const insert = await Database
     .insert({
       module_id: Module.get_id_from_code(request.input('module_code')),
+      user_id: auth.user.id,
       title: request.input('title'),
       body: request.input('body'),
+      rating: rating,
       created_at: moment().format('YYYY-MM-DD hh:mm:ss'),
       updated_at: moment().format('YYYY-MM-DD hh:mm:ss')
     })
