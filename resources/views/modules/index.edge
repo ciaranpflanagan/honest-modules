@@ -33,9 +33,14 @@
   <div class="row">
     <div class="col-md-8">
       @each(review in reviews)
-        <div class="row">
+        <div class="row review-block">
           <div class="col-md-12">
             <h3>{{ review.title }}</h3>
+            <star-rating
+              v-model="rating"
+              rating="{{ review.rating }}"
+              star-size="15"
+              read-only="true"></star-rating>
             <p>
               {{ review.body }}
             </p>
@@ -63,6 +68,7 @@
             <star-rating 
               v-model="rating"
               star-size="20"
+              v-bind:increment="0.5"
               @rating-selected="setRating"></star-rating>
               <input type="hidden" name="rating" v-model="rating">
           </div>

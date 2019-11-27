@@ -1,5 +1,6 @@
 Vue.component('star-rating', VueStarRating.default);
 
+// Adding a review
 new Vue({
   el: "#star-rating",
   methods: {
@@ -10,4 +11,9 @@ new Vue({
   data:{
     rating: 3
   }
+});
+
+// Displaying review
+new Vue({
+  el: ".review-block"
 });
