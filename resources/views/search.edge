@@ -1,0 +1,28 @@
+@layout('inc/layouts')
+
+@section('content')
+  <section>
+    <div class="subtitle">
+      <div class="row">
+        <div class="col-md-12">
+          <h1>Search Results For <i>{{ search }}</i></h1><br>
+        </div>
+      </div>
+    </div>
+  </section>
+  @each(result in results)
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <form action="">
+          <div class="row">
+            <a href="/{{ result.module_code }}"><h2>{{ result.name }}</h2></a>
+            <p>
+              {{ result.description }}
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr>
+  @endeach
+@endsection

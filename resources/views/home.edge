@@ -12,7 +12,8 @@
   </section>
   <div class="row">
     <div class="col-md-8 offset-md-2">
-      <form action="">
+      <form action="/search" method="POST">
+        {{ csrfField() }}
         <div class="row">
           <div class="col-md-8">
             <input type="text" name="search" class="form-control" placeholder="COMP20030">
