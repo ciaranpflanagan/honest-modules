@@ -1,31 +1,10 @@
-# Adonis fullstack application
+# Honest Modules
 
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
+Honest Modules aims to provide a central source for feedback and reviews of University modules. Honest Modules was born out of a frustration that came with University feedback going unanswered and a need for students to make a more informed choice when choosing University modules.
 
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
+## Application Functionality
 
-## Setup
-
-Use the adonis command to install the blueprint
-
-```bash
-adonis new yardstick
-```
-
-or manually clone the repo and then run `npm install`.
-
-
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
+1. Search Function
+2. Module Reviews
+3. Professor Reviews
+4. University specific registration and interaction
